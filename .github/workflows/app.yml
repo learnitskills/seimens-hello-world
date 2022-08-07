@@ -29,5 +29,5 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
 
-      - name: run the application
-        run: java -jar /home/ec2-user/webapp/target/webapp.war
+      # - name: run the application
+      #   run: java -jar /home/ec2-user/webapp/target/webapp.war
