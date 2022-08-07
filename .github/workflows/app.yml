@@ -4,32 +4,40 @@ on:
     branches: [ "dev" ]
 
 jobs:
-  build:
+  # build:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
+  #   steps:
 
-    - name: checout repo
-      uses: actions/checkout@v3
+  #   - name: checout repo
+  #     uses: actions/checkout@v3
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
+    # - name: Set up JDK 11
+    #   uses: actions/setup-java@v1
+    #   with:
+    #     java-version: 11
 
-    - name: Build with Maven
-      run: mvn clean package
+    # - name: Build with Maven
+    #   run: mvn clean package
 
 
   deploy:
-    needs: build
+    # needs: build
     name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Build with Maven
+        run: mvn clean package
 
       - name: Deploy to ec2
         uses: easingthemes/ssh-deploy@main
