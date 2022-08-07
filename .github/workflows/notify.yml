@@ -1,22 +1,22 @@
-name: Deployment on EC2
+# name: Deployment on EC2
 
-on:
-  workflow_run:
-    workflows: ["build app"]
-    types:
-      - completed
-jobs:
-  notify:
-    runs-on: ubuntu-latest
+# on:
+#   workflow_run:
+#     workflows: ["build app"]
+#     types:
+#       - completed
+# jobs:
+#   notify:
+#     runs-on: ubuntu-latest
     
-    steps:
-      - name: Checkout the files
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout the files
+#         uses: actions/checkout@v2
 
-      - name: Deploy to ec2
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
+#       - name: Deploy to ec2
+#         uses: easingthemes/ssh-deploy@main
+#         env:
+#           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+#           REMOTE_HOST: ${{ secrets.HOST_DNS }}
+#           REMOTE_USER: ${{ secrets.USERNAME }}
+#           TARGET: ${{ secrets.TARGET_DIR }}
